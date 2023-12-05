@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище chronichlesModelContainer" CdmEntityContainer="chronichlesEntities">
+    <EntitySetMapping Name="Альпинисты">
+      <EntityTypeMapping TypeName="chronichlesModel.Альпинисты">
+        <MappingFragment StoreEntitySet="Альпинисты">
+          <ScalarProperty Name="ID_Альпиниста" ColumnName="ID Альпиниста" />
+          <ScalarProperty Name="Адрес" ColumnName="Адрес" />
+          <ScalarProperty Name="Телефон" ColumnName="Телефон" />
+          <ScalarProperty Name="Пол" ColumnName="Пол" />
+          <ScalarProperty Name="Фамилия_альпиниста" ColumnName="Фамилия альпиниста" />
+          <ScalarProperty Name="Имя_альпиниста" ColumnName="Имя альпиниста" />
+          <ScalarProperty Name="Отчество_альпиниста" ColumnName="Отчество альпиниста" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Альпинисты_в_группах">
+      <EntityTypeMapping TypeName="chronichlesModel.Альпинисты_в_группах">
+        <MappingFragment StoreEntitySet="Альпинисты_в_группах">
+          <ScalarProperty Name="ID_Альпинисты_в_группах" ColumnName="ID_Альпинисты_в_группах" />
+          <ScalarProperty Name="ID_Группы" ColumnName="ID Группы" />
+          <ScalarProperty Name="ID_Альпиниста" ColumnName="ID Альпиниста" />
+          <ScalarProperty Name="Дата_начала_возхождения" ColumnName="Дата начала возхождения" />
+          <ScalarProperty Name="Дата_завершения_восхождения" ColumnName="Дата завершения восхождения" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Восхождения">
+      <EntityTypeMapping TypeName="chronichlesModel.Восхождения">
+        <MappingFragment StoreEntitySet="Восхождения">
+          <ScalarProperty Name="ID_Восхождения" ColumnName="ID_Восхождения" />
+          <ScalarProperty Name="ID_Горы" ColumnName="ID Горы" />
+          <ScalarProperty Name="ID_Группы" ColumnName="ID Группы" />
+          <ScalarProperty Name="Дата_Возхождения" ColumnName="Дата Возхождения" />
+          <ScalarProperty Name="Успешность" ColumnName="Успешность" />
+          <ScalarProperty Name="Длительность" ColumnName="Длительность" />
+          <ScalarProperty Name="Количество_вошедших" ColumnName="Количество вошедших" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Горы">
+      <EntityTypeMapping TypeName="chronichlesModel.Горы">
+        <MappingFragment StoreEntitySet="Горы">
+          <ScalarProperty Name="ID_Горы" ColumnName="ID Горы" />
+          <ScalarProperty Name="Название" ColumnName="Название" />
+          <ScalarProperty Name="Высота" ColumnName="Высота" />
+          <ScalarProperty Name="Страна" ColumnName="Страна" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Группы">
+      <EntityTypeMapping TypeName="chronichlesModel.Группы">
+        <MappingFragment StoreEntitySet="Группы">
+          <ScalarProperty Name="ID_Группы" ColumnName="ID Группы" />
+          <ScalarProperty Name="Количество" ColumnName="Количество" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

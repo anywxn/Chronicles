@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище chronichlesModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Альпинисты">
+          <Key>
+            <PropertyRef Name="ID Альпиниста" />
+          </Key>
+          <Property Name="ID Альпиниста" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Адрес" Type="nvarchar" MaxLength="255" />
+          <Property Name="Телефон" Type="nvarchar" MaxLength="11" />
+          <Property Name="Пол" Type="nvarchar" MaxLength="1" />
+          <Property Name="Фамилия альпиниста" Type="nvarchar" MaxLength="255" />
+          <Property Name="Имя альпиниста" Type="nvarchar" MaxLength="255" />
+          <Property Name="Отчество альпиниста" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Альпинисты_в_группах">
+          <Key>
+            <PropertyRef Name="ID_Альпинисты_в_группах" />
+          </Key>
+          <Property Name="ID_Альпинисты_в_группах" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID Группы" Type="int" />
+          <Property Name="ID Альпиниста" Type="int" />
+          <Property Name="Дата начала возхождения" Type="date" />
+          <Property Name="Дата завершения восхождения" Type="date" />
+        </EntityType>
+        <EntityType Name="Восхождения">
+          <Key>
+            <PropertyRef Name="ID_Восхождения" />
+          </Key>
+          <Property Name="ID_Восхождения" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID Горы" Type="int" />
+          <Property Name="ID Группы" Type="int" />
+          <Property Name="Дата Возхождения" Type="date" />
+          <Property Name="Успешность" Type="nvarchar" MaxLength="7" />
+          <Property Name="Длительность" Type="int" />
+          <Property Name="Количество вошедших" Type="int" />
+        </EntityType>
+        <EntityType Name="Горы">
+          <Key>
+            <PropertyRef Name="ID Горы" />
+          </Key>
+          <Property Name="ID Горы" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Название" Type="nvarchar" MaxLength="255" />
+          <Property Name="Высота" Type="int" />
+          <Property Name="Страна" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Группы">
+          <Key>
+            <PropertyRef Name="ID Группы" />
+          </Key>
+          <Property Name="ID Группы" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Количество" Type="int" />
+        </EntityType>
+        <Association Name="FK_Альпинисты в группах_Альпинисты">
+          <End Role="Альпинисты" Type="Self.Альпинисты" Multiplicity="0..1" />
+          <End Role="Альпинисты_в_группах" Type="Self.Альпинисты_в_группах" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Альпинисты">
+              <PropertyRef Name="ID Альпиниста" />
+            </Principal>
+            <Dependent Role="Альпинисты_в_группах">
+              <PropertyRef Name="ID Альпиниста" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Альпинисты в группах_Группы">
+          <End Role="Группы" Type="Self.Группы" Multiplicity="0..1" />
+          <End Role="Альпинисты_в_группах" Type="Self.Альпинисты_в_группах" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Группы">
+              <PropertyRef Name="ID Группы" />
+            </Principal>
+            <Dependent Role="Альпинисты_в_группах">
+              <PropertyRef Name="ID Группы" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Восхождения_Горы">
+          <End Role="Горы" Type="Self.Горы" Multiplicity="0..1" />
+          <End Role="Восхождения" Type="Self.Восхождения" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Горы">
+              <PropertyRef Name="ID Горы" />
+            </Principal>
+            <Dependent Role="Восхождения">
+              <PropertyRef Name="ID Горы" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Восхождения_Группы">
+          <End Role="Группы" Type="Self.Группы" Multiplicity="0..1" />
+          <End Role="Восхождения" Type="Self.Восхождения" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Группы">
+              <PropertyRef Name="ID Группы" />
+            </Principal>
+            <Dependent Role="Восхождения">
+              <PropertyRef Name="ID Группы" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище chronichlesModelContainer">
+          <EntitySet Name="Альпинисты" EntityType="Self.Альпинисты" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Альпинисты_в_группах" EntityType="Self.Альпинисты_в_группах" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Восхождения" EntityType="Self.Восхождения" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Горы" EntityType="Self.Горы" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Группы" EntityType="Self.Группы" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Альпинисты в группах_Альпинисты" Association="Self.FK_Альпинисты в группах_Альпинисты">
+            <End Role="Альпинисты" EntitySet="Альпинисты" />
+            <End Role="Альпинисты_в_группах" EntitySet="Альпинисты_в_группах" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Альпинисты в группах_Группы" Association="Self.FK_Альпинисты в группах_Группы">
+            <End Role="Группы" EntitySet="Группы" />
+            <End Role="Альпинисты_в_группах" EntitySet="Альпинисты_в_группах" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Восхождения_Горы" Association="Self.FK_Восхождения_Горы">
+            <End Role="Горы" EntitySet="Горы" />
+            <End Role="Восхождения" EntitySet="Восхождения" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Восхождения_Группы" Association="Self.FK_Восхождения_Группы">
+            <End Role="Группы" EntitySet="Группы" />
+            <End Role="Восхождения" EntitySet="Восхождения" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="chronichlesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Альпинисты">
+          <Key>
+            <PropertyRef Name="ID_Альпиниста" />
+          </Key>
+          <Property Name="ID_Альпиниста" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Адрес" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Телефон" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Пол" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="Фамилия_альпиниста" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Имя_альпиниста" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Отчество_альпиниста" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Альпинисты_в_группах" Relationship="Self.FK_Альпинисты_в_группах_Альпинисты" FromRole="Альпинисты" ToRole="Альпинисты_в_группах" />
+        </EntityType>
+        <EntityType Name="Альпинисты_в_группах">
+          <Key>
+            <PropertyRef Name="ID_Альпинисты_в_группах" />
+          </Key>
+          <Property Name="ID_Альпинисты_в_группах" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Группы" Type="Int32" />
+          <Property Name="ID_Альпиниста" Type="Int32" />
+          <Property Name="Дата_начала_возхождения" Type="DateTime" Precision="0" />
+          <Property Name="Дата_завершения_восхождения" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Альпинисты" Relationship="Self.FK_Альпинисты_в_группах_Альпинисты" FromRole="Альпинисты_в_группах" ToRole="Альпинисты" />
+          <NavigationProperty Name="Группы" Relationship="Self.FK_Альпинисты_в_группах_Группы" FromRole="Альпинисты_в_группах" ToRole="Группы" />
+        </EntityType>
+        <EntityType Name="Восхождения">
+          <Key>
+            <PropertyRef Name="ID_Восхождения" />
+          </Key>
+          <Property Name="ID_Восхождения" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Горы" Type="Int32" />
+          <Property Name="ID_Группы" Type="Int32" />
+          <Property Name="Дата_Возхождения" Type="DateTime" Precision="0" />
+          <Property Name="Успешность" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="Длительность" Type="Int32" />
+          <Property Name="Количество_вошедших" Type="Int32" />
+          <NavigationProperty Name="Горы" Relationship="Self.FK_Восхождения_Горы" FromRole="Восхождения" ToRole="Горы" />
+          <NavigationProperty Name="Группы" Relationship="Self.FK_Восхождения_Группы" FromRole="Восхождения" ToRole="Группы" />
+        </EntityType>
+        <EntityType Name="Горы">
+          <Key>
+            <PropertyRef Name="ID_Горы" />
+          </Key>
+          <Property Name="ID_Горы" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Название" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Высота" Type="Int32" />
+          <Property Name="Страна" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Восхождения" Relationship="Self.FK_Восхождения_Горы" FromRole="Горы" ToRole="Восхождения" />
+        </EntityType>
+        <EntityType Name="Группы">
+          <Key>
+            <PropertyRef Name="ID_Группы" />
+          </Key>
+          <Property Name="ID_Группы" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Количество" Type="Int32" />
+          <NavigationProperty Name="Альпинисты_в_группах" Relationship="Self.FK_Альпинисты_в_группах_Группы" FromRole="Группы" ToRole="Альпинисты_в_группах" />
+          <NavigationProperty Name="Восхождения" Relationship="Self.FK_Восхождения_Группы" FromRole="Группы" ToRole="Восхождения" />
+        </EntityType>
+        <Association Name="FK_Альпинисты_в_группах_Альпинисты">
+          <End Role="Альпинисты" Type="Self.Альпинисты" Multiplicity="0..1" />
+          <End Role="Альпинисты_в_группах" Type="Self.Альпинисты_в_группах" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Альпинисты">
+              <PropertyRef Name="ID_Альпиниста" />
+            </Principal>
+            <Dependent Role="Альпинисты_в_группах">
+              <PropertyRef Name="ID_Альпиниста" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Альпинисты_в_группах_Группы">
+          <End Role="Группы" Type="Self.Группы" Multiplicity="0..1" />
+          <End Role="Альпинисты_в_группах" Type="Self.Альпинисты_в_группах" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Группы">
+              <PropertyRef Name="ID_Группы" />
+            </Principal>
+            <Dependent Role="Альпинисты_в_группах">
+              <PropertyRef Name="ID_Группы" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Восхождения_Горы">
+          <End Role="Горы" Type="Self.Горы" Multiplicity="0..1" />
+          <End Role="Восхождения" Type="Self.Восхождения" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Горы">
+              <PropertyRef Name="ID_Горы" />
+            </Principal>
+            <Dependent Role="Восхождения">
+              <PropertyRef Name="ID_Горы" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Восхождения_Группы">
+          <End Role="Группы" Type="Self.Группы" Multiplicity="0..1" />
+          <End Role="Восхождения" Type="Self.Восхождения" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Группы">
+              <PropertyRef Name="ID_Группы" />
+            </Principal>
+            <Dependent Role="Восхождения">
+              <PropertyRef Name="ID_Группы" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="chronichlesEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Альпинисты" EntityType="Self.Альпинисты" />
+          <EntitySet Name="Альпинисты_в_группах" EntityType="Self.Альпинисты_в_группах" />
+          <EntitySet Name="Восхождения" EntityType="Self.Восхождения" />
+          <EntitySet Name="Горы" EntityType="Self.Горы" />
+          <EntitySet Name="Группы" EntityType="Self.Группы" />
+          <AssociationSet Name="FK_Альпинисты_в_группах_Альпинисты" Association="Self.FK_Альпинисты_в_группах_Альпинисты">
+            <End Role="Альпинисты" EntitySet="Альпинисты" />
+            <End Role="Альпинисты_в_группах" EntitySet="Альпинисты_в_группах" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Альпинисты_в_группах_Группы" Association="Self.FK_Альпинисты_в_группах_Группы">
+            <End Role="Группы" EntitySet="Группы" />
+            <End Role="Альпинисты_в_группах" EntitySet="Альпинисты_в_группах" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Восхождения_Горы" Association="Self.FK_Восхождения_Горы">
+            <End Role="Горы" EntitySet="Горы" />
+            <End Role="Восхождения" EntitySet="Восхождения" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Восхождения_Группы" Association="Self.FK_Восхождения_Группы">
+            <End Role="Группы" EntitySet="Группы" />
+            <End Role="Восхождения" EntitySet="Восхождения" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище chronichlesModelContainer" CdmEntityContainer="chronichlesEntities">
+          <EntitySetMapping Name="Альпинисты">
+            <EntityTypeMapping TypeName="chronichlesModel.Альпинисты">
+              <MappingFragment StoreEntitySet="Альпинисты">
+                <ScalarProperty Name="ID_Альпиниста" ColumnName="ID Альпиниста" />
+                <ScalarProperty Name="Адрес" ColumnName="Адрес" />
+                <ScalarProperty Name="Телефон" ColumnName="Телефон" />
+                <ScalarProperty Name="Пол" ColumnName="Пол" />
+                <ScalarProperty Name="Фамилия_альпиниста" ColumnName="Фамилия альпиниста" />
+                <ScalarProperty Name="Имя_альпиниста" ColumnName="Имя альпиниста" />
+                <ScalarProperty Name="Отчество_альпиниста" ColumnName="Отчество альпиниста" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Альпинисты_в_группах">
+            <EntityTypeMapping TypeName="chronichlesModel.Альпинисты_в_группах">
+              <MappingFragment StoreEntitySet="Альпинисты_в_группах">
+                <ScalarProperty Name="ID_Альпинисты_в_группах" ColumnName="ID_Альпинисты_в_группах" />
+                <ScalarProperty Name="ID_Группы" ColumnName="ID Группы" />
+                <ScalarProperty Name="ID_Альпиниста" ColumnName="ID Альпиниста" />
+                <ScalarProperty Name="Дата_начала_возхождения" ColumnName="Дата начала возхождения" />
+                <ScalarProperty Name="Дата_завершения_восхождения" ColumnName="Дата завершения восхождения" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Восхождения">
+            <EntityTypeMapping TypeName="chronichlesModel.Восхождения">
+              <MappingFragment StoreEntitySet="Восхождения">
+                <ScalarProperty Name="ID_Восхождения" ColumnName="ID_Восхождения" />
+                <ScalarProperty Name="ID_Горы" ColumnName="ID Горы" />
+                <ScalarProperty Name="ID_Группы" ColumnName="ID Группы" />
+                <ScalarProperty Name="Дата_Возхождения" ColumnName="Дата Возхождения" />
+                <ScalarProperty Name="Успешность" ColumnName="Успешность" />
+                <ScalarProperty Name="Длительность" ColumnName="Длительность" />
+                <ScalarProperty Name="Количество_вошедших" ColumnName="Количество вошедших" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Горы">
+            <EntityTypeMapping TypeName="chronichlesModel.Горы">
+              <MappingFragment StoreEntitySet="Горы">
+                <ScalarProperty Name="ID_Горы" ColumnName="ID Горы" />
+                <ScalarProperty Name="Название" ColumnName="Название" />
+                <ScalarProperty Name="Высота" ColumnName="Высота" />
+                <ScalarProperty Name="Страна" ColumnName="Страна" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Группы">
+            <EntityTypeMapping TypeName="chronichlesModel.Группы">
+              <MappingFragment StoreEntitySet="Группы">
+                <ScalarProperty Name="ID_Группы" ColumnName="ID Группы" />
+                <ScalarProperty Name="Количество" ColumnName="Количество" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

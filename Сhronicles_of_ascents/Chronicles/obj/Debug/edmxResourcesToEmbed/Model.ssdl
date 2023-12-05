@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище chronichlesModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Альпинисты">
+    <Key>
+      <PropertyRef Name="ID Альпиниста" />
+    </Key>
+    <Property Name="ID Альпиниста" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Адрес" Type="nvarchar" MaxLength="255" />
+    <Property Name="Телефон" Type="nvarchar" MaxLength="11" />
+    <Property Name="Пол" Type="nvarchar" MaxLength="1" />
+    <Property Name="Фамилия альпиниста" Type="nvarchar" MaxLength="255" />
+    <Property Name="Имя альпиниста" Type="nvarchar" MaxLength="255" />
+    <Property Name="Отчество альпиниста" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Альпинисты_в_группах">
+    <Key>
+      <PropertyRef Name="ID_Альпинисты_в_группах" />
+    </Key>
+    <Property Name="ID_Альпинисты_в_группах" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID Группы" Type="int" />
+    <Property Name="ID Альпиниста" Type="int" />
+    <Property Name="Дата начала возхождения" Type="date" />
+    <Property Name="Дата завершения восхождения" Type="date" />
+  </EntityType>
+  <EntityType Name="Восхождения">
+    <Key>
+      <PropertyRef Name="ID_Восхождения" />
+    </Key>
+    <Property Name="ID_Восхождения" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID Горы" Type="int" />
+    <Property Name="ID Группы" Type="int" />
+    <Property Name="Дата Возхождения" Type="date" />
+    <Property Name="Успешность" Type="nvarchar" MaxLength="7" />
+    <Property Name="Длительность" Type="int" />
+    <Property Name="Количество вошедших" Type="int" />
+  </EntityType>
+  <EntityType Name="Горы">
+    <Key>
+      <PropertyRef Name="ID Горы" />
+    </Key>
+    <Property Name="ID Горы" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Название" Type="nvarchar" MaxLength="255" />
+    <Property Name="Высота" Type="int" />
+    <Property Name="Страна" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Группы">
+    <Key>
+      <PropertyRef Name="ID Группы" />
+    </Key>
+    <Property Name="ID Группы" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Количество" Type="int" />
+  </EntityType>
+  <Association Name="FK_Альпинисты в группах_Альпинисты">
+    <End Role="Альпинисты" Type="Self.Альпинисты" Multiplicity="0..1" />
+    <End Role="Альпинисты_в_группах" Type="Self.Альпинисты_в_группах" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Альпинисты">
+        <PropertyRef Name="ID Альпиниста" />
+      </Principal>
+      <Dependent Role="Альпинисты_в_группах">
+        <PropertyRef Name="ID Альпиниста" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Альпинисты в группах_Группы">
+    <End Role="Группы" Type="Self.Группы" Multiplicity="0..1" />
+    <End Role="Альпинисты_в_группах" Type="Self.Альпинисты_в_группах" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Группы">
+        <PropertyRef Name="ID Группы" />
+      </Principal>
+      <Dependent Role="Альпинисты_в_группах">
+        <PropertyRef Name="ID Группы" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Восхождения_Горы">
+    <End Role="Горы" Type="Self.Горы" Multiplicity="0..1" />
+    <End Role="Восхождения" Type="Self.Восхождения" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Горы">
+        <PropertyRef Name="ID Горы" />
+      </Principal>
+      <Dependent Role="Восхождения">
+        <PropertyRef Name="ID Горы" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Восхождения_Группы">
+    <End Role="Группы" Type="Self.Группы" Multiplicity="0..1" />
+    <End Role="Восхождения" Type="Self.Восхождения" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Группы">
+        <PropertyRef Name="ID Группы" />
+      </Principal>
+      <Dependent Role="Восхождения">
+        <PropertyRef Name="ID Группы" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище chronichlesModelContainer">
+    <EntitySet Name="Альпинисты" EntityType="Self.Альпинисты" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Альпинисты_в_группах" EntityType="Self.Альпинисты_в_группах" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Восхождения" EntityType="Self.Восхождения" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Горы" EntityType="Self.Горы" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Группы" EntityType="Self.Группы" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Альпинисты в группах_Альпинисты" Association="Self.FK_Альпинисты в группах_Альпинисты">
+      <End Role="Альпинисты" EntitySet="Альпинисты" />
+      <End Role="Альпинисты_в_группах" EntitySet="Альпинисты_в_группах" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Альпинисты в группах_Группы" Association="Self.FK_Альпинисты в группах_Группы">
+      <End Role="Группы" EntitySet="Группы" />
+      <End Role="Альпинисты_в_группах" EntitySet="Альпинисты_в_группах" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Восхождения_Горы" Association="Self.FK_Восхождения_Горы">
+      <End Role="Горы" EntitySet="Горы" />
+      <End Role="Восхождения" EntitySet="Восхождения" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Восхождения_Группы" Association="Self.FK_Восхождения_Группы">
+      <End Role="Группы" EntitySet="Группы" />
+      <End Role="Восхождения" EntitySet="Восхождения" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

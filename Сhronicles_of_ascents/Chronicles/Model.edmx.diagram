@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="84c389132b9d45298ce886d7a23675d5" Name="Diagram1">
+        <EntityTypeShape EntityType="chronichlesModel.Альпинисты" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" FillColor="192, 0, 0" />
+        <EntityTypeShape EntityType="chronichlesModel.Альпинисты_в_группах" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" FillColor="255, 255, 192" />
+        <EntityTypeShape EntityType="chronichlesModel.Восхождения" Width="1.5" PointX="6" PointY="3.625" IsExpanded="true" FillColor="255, 255, 192" />
+        <EntityTypeShape EntityType="chronichlesModel.Горы" Width="1.5" PointX="3.75" PointY="1" IsExpanded="true" FillColor="192, 0, 0" />
+        <EntityTypeShape EntityType="chronichlesModel.Группы" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" FillColor="192, 0, 0" />
+        <AssociationConnector Association="chronichlesModel.FK_Альпинисты_в_группах_Альпинисты" ManuallyRouted="false" />
+        <AssociationConnector Association="chronichlesModel.FK_Альпинисты_в_группах_Группы" ManuallyRouted="false" />
+        <AssociationConnector Association="chronichlesModel.FK_Восхождения_Горы" ManuallyRouted="false" />
+        <AssociationConnector Association="chronichlesModel.FK_Восхождения_Группы" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
