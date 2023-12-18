@@ -58,6 +58,36 @@
     <NavigationProperty Name="Альпинисты_в_группах" Relationship="Self.FK_Альпинисты_в_группах_Группы" FromRole="Группы" ToRole="Альпинисты_в_группах" />
     <NavigationProperty Name="Восхождения" Relationship="Self.FK_Восхождения_Группы" FromRole="Группы" ToRole="Восхождения" />
   </EntityType>
+  <EntityType Name="Колво_восхождений_альпинистов">
+    <Key>
+      <PropertyRef Name="ID_Альпиниста" />
+    </Key>
+    <Property Name="ID_Альпиниста" Type="Int32" Nullable="false" />
+    <Property Name="Фамилия_альпиниста" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Имя_альпиниста" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Отчество_альпиниста" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Количество_восхождений_альпиниста" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Количество_возвождений">
+    <Key>
+      <PropertyRef Name="ID_Горы" />
+    </Key>
+    <Property Name="ID_Горы" Type="Int32" Nullable="false" />
+    <Property Name="Название_Горы" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Количество_восхождений" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Список_гор_на_которых_бывали_альпинисты">
+    <Key>
+      <PropertyRef Name="ID_Альпиниста" />
+    </Key>
+    <Property Name="ID_Группы" Type="Int32" />
+    <Property Name="ID_Альпиниста" Type="Int32" Nullable="false" />
+    <Property Name="Фамилия_альпиниста" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Имя_альпиниста" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Отчество_альпиниста" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Дата_Возхождения" Type="DateTime" Precision="0" />
+    <Property Name="Название_Горы" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
   <Association Name="FK_Альпинисты_в_группах_Альпинисты">
     <End Role="Альпинисты" Type="Self.Альпинисты" Multiplicity="0..1" />
     <End Role="Альпинисты_в_группах" Type="Self.Альпинисты_в_группах" Multiplicity="*" />
@@ -112,6 +142,9 @@
     <EntitySet Name="Восхождения" EntityType="Self.Восхождения" />
     <EntitySet Name="Горы" EntityType="Self.Горы" />
     <EntitySet Name="Группы" EntityType="Self.Группы" />
+    <EntitySet Name="Колво_восхождений_альпинистов" EntityType="Self.Колво_восхождений_альпинистов" />
+    <EntitySet Name="Количество_возвождений" EntityType="Self.Количество_возвождений" />
+    <EntitySet Name="Список_гор_на_которых_бывали_альпинисты" EntityType="Self.Список_гор_на_которых_бывали_альпинисты" />
     <AssociationSet Name="FK_Альпинисты_в_группах_Альпинисты" Association="Self.FK_Альпинисты_в_группах_Альпинисты">
       <End Role="Альпинисты" EntitySet="Альпинисты" />
       <End Role="Альпинисты_в_группах" EntitySet="Альпинисты_в_группах" />

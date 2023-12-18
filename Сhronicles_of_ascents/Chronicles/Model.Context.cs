@@ -15,6 +15,16 @@ namespace Chronicles
     
     public partial class chronichlesEntities : DbContext
     {
+
+        private static chronichlesEntities _context;
+        public static chronichlesEntities GetContext()
+        {
+            if (_context == null)
+                _context = new chronichlesEntities();
+
+            return _context;
+        }
+
         public chronichlesEntities()
             : base("name=chronichlesEntities")
         {
@@ -30,5 +40,8 @@ namespace Chronicles
         public virtual DbSet<Восхождения> Восхождения { get; set; }
         public virtual DbSet<Горы> Горы { get; set; }
         public virtual DbSet<Группы> Группы { get; set; }
+        public virtual DbSet<Колво_восхождений_альпинистов> Колво_восхождений_альпинистов { get; set; }
+        public virtual DbSet<Количество_возвождений> Количество_возвождений { get; set; }
+        public virtual DbSet<Список_гор_на_которых_бывали_альпинисты> Список_гор_на_которых_бывали_альпинисты { get; set; }
     }
 }

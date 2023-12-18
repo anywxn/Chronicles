@@ -4,12 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="84c389132b9d45298ce886d7a23675d5" Name="Diagram1">
-        <EntityTypeShape EntityType="chronichlesModel.Альпинисты" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" FillColor="192, 0, 0" />
-        <EntityTypeShape EntityType="chronichlesModel.Альпинисты_в_группах" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" FillColor="255, 255, 192" />
-        <EntityTypeShape EntityType="chronichlesModel.Восхождения" Width="1.5" PointX="6" PointY="3.625" IsExpanded="true" FillColor="255, 255, 192" />
-        <EntityTypeShape EntityType="chronichlesModel.Горы" Width="1.5" PointX="3.75" PointY="1" IsExpanded="true" FillColor="192, 0, 0" />
-        <EntityTypeShape EntityType="chronichlesModel.Группы" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" FillColor="192, 0, 0" />
+      <Diagram DiagramId="9ace4c2c9fa44225b965e9630963026c" Name="Diagram1">
+        <EntityTypeShape EntityType="chronichlesModel.Альпинисты" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="chronichlesModel.Альпинисты_в_группах" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="chronichlesModel.Восхождения" Width="1.5" PointX="6" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="chronichlesModel.Горы" Width="1.5" PointX="3.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="chronichlesModel.Группы" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="chronichlesModel.Колво_восхождений_альпинистов" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="chronichlesModel.Количество_возвождений" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="chronichlesModel.Список_гор_на_которых_бывали_альпинисты" Width="1.5" PointX="4.75" PointY="7.75" IsExpanded="true" />
         <AssociationConnector Association="chronichlesModel.FK_Альпинисты_в_группах_Альпинисты" ManuallyRouted="false" />
         <AssociationConnector Association="chronichlesModel.FK_Альпинисты_в_группах_Группы" ManuallyRouted="false" />
         <AssociationConnector Association="chronichlesModel.FK_Восхождения_Горы" ManuallyRouted="false" />

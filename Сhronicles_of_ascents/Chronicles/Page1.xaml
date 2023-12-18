@@ -6,21 +6,75 @@
       xmlns:local="clr-namespace:Chronicles"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="">
+      Title=""
+      FontFamily="Microsoft JhengHei UI Light">
 
     <Grid>
         <TabControl Style="{StaticResource CustomTabControlStyle}">
             <TabItem Header="Таблицы" Style="{StaticResource CustomTabItemStyle}">
-                <Button Content="Таблица 1" Background="White" Foreground="Black" BorderThickness="0.5" Margin="10,25,10,5" Width="175" Height="30" FontSize="15" HorizontalAlignment="Left" Click="Button_Click">
-                </Button>
+                <StackPanel>
+                    <Button Content="Таблица 'Альпинисты'" Background="White" Name="Table1" Foreground="Black" BorderThickness="0.5" Margin="10,25,10,5" Width="250" Height="30" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Table1_Click">
+                    </Button>
+                    <Button Content="Таблица 'Горы'" Background="White" Name="Table2" Foreground="Black" BorderThickness="0.5" Margin="10,25,10,5" Width="250" Height="30" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Table2_Click">
+                    </Button>
+                    <Button Content="Таблица 'Восхождения'" Background="White" Name="Table3" Foreground="Black" BorderThickness="0.5" Margin="10,25,10,5" Width="250" Height="30" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Table3_Click">
+                    </Button>
+                    <Button Content="Таблица 'Группы'" Background="White" Name="Table4" Foreground="Black" BorderThickness="0.5" Margin="10,25,10,5" Width="250" Height="30" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Table4_Click">
+                    </Button>
+                    <Button Content="Таблица 'Альпинисты в группах'" Background="White" Name="Table5" Foreground="Black" BorderThickness="0.5" Margin="10,25,10,5" Width="250" Height="30" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Table5_Click">
+                    </Button>
+                </StackPanel>
             </TabItem>
             <TabItem Header="Запросы" Style="{StaticResource CustomTabItemStyle}">
-                <Button Content="Запрос 1" Background="White" Foreground="Black" BorderThickness="0.5" Margin="10,25,10,5" Width="175" Height="30" FontSize="15" HorizontalAlignment="Center" Click="Button_Click">
-                </Button>
+                <StackPanel Orientation="Horizontal">
+                    <!-- Левая часть (вертикально расположенные кнопки) -->
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <StackPanel Orientation="Vertical" Width="200">
+                            <Label>Горы выше 5 км</Label>
+                            <Button Content="Запрос 1" Name="query1" Click="query1_Click"/>
+                            <TextBlock Text="Кол-во восхождений альпинистов." TextWrapping="Wrap"/>
+                            <Button Content="Запрос 2" Name="query2" Click="query2_Click"/>
+                            <TextBlock Text="Средняя длительность восхождений." TextWrapping="Wrap"/>
+                            <Button Content="Запрос 3" Name="query3" Click="query3_Click"/>
+                            <TextBlock Text="Общая высота гор по странам." TextWrapping="Wrap"/>
+                            <Button Content="Запрос 4" Name="query4" Click="query4_Click"/>
+                            <TextBlock Text="Восхождения на горы в хронологическом порядке." TextWrapping="Wrap"/>
+                            <Button Content="Запрос 5" Name="query5" Click="query5_Click" />
+                            <TextBlock Text="Горы по количеству восхождений." TextWrapping="Wrap"/>
+                            <Button Content="Запрос 6"  Name="query6" Click="query6_Click"/>
+                            <TextBlock Text="Альпинисты отсортированные по фамилии." TextWrapping="Wrap"/>
+                            <Button Content="Запрос 7"  Name="query7" Click="query7_Click"/>
+                            <TextBlock Text="Альпинисты ни разу не всходившие." TextWrapping="Wrap"/>
+                            <Button Content="Запрос 8"  Name="query8" Click="query8_Click"/>
+                            <TextBlock Text="Количество восхождений по странам и их успешность." TextWrapping="Wrap"/>
+                            <Button Content="Запрос 9"  Name="query9" Click="query9_Click"/>
+                            <TextBlock Text="Топ 5 альпинистов на количеству восхождлений." TextWrapping="Wrap"/>
+                            <Button Content="Запрос 10"  Name="query10" Click="query10_Click"/>
+                            <!-- Добавьте здесь другие кнопки -->
+                        </StackPanel>
+                    </ScrollViewer>
+
+                    <!-- Правая часть (отображение результата запроса) -->
+                    <DataGrid x:Name="resultGrid" AutoGenerateColumns="True" />
+                </StackPanel>
             </TabItem>
             <TabItem Header="Представления" Style="{StaticResource CustomTabItemStyle}">
-                <Button Content="Представление 1" Background="White" Foreground="Black" BorderThickness="0.5" Margin="10,25,10,5" Width="175" Height="30" FontSize="15" HorizontalAlignment="Center" Click="Button_Click">
-                </Button>
+                <StackPanel Orientation="Horizontal">
+                    <!-- Левая часть (вертикально расположенные кнопки) -->
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <StackPanel Orientation="Vertical" Width="200">
+                            
+                            <Button Content="Представление 1" Name="btnView1" Click="btnView1_Click"/>
+                            <Button Content="Представление 2" />
+                            <Button Content="Представление 3" />
+                            <Button Content="Представление 4" />
+                            <Button Content="Представление 5" />
+                        </StackPanel>
+                    </ScrollViewer>
+
+                    <!-- Правая часть (отображение результата запроса) -->
+                    <DataGrid x:Name="ViewGrid" AutoGenerateColumns="True" />
+                </StackPanel>
             </TabItem>
         </TabControl>
 

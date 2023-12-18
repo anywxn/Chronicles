@@ -23,6 +23,7 @@ namespace Chronicles
         public AddEdit()
         {
             InitializeComponent();
+            Alp.ItemsSource = chronichlesEntities.GetContext().Альпинисты.ToList();
         }
     }
 }

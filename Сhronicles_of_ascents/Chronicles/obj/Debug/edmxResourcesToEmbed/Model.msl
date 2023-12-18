@@ -56,5 +56,38 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Колво_восхождений_альпинистов">
+      <EntityTypeMapping TypeName="chronichlesModel.Колво_восхождений_альпинистов">
+        <MappingFragment StoreEntitySet="Колво_восхождений_альпинистов">
+          <ScalarProperty Name="ID_Альпиниста" ColumnName="ID Альпиниста" />
+          <ScalarProperty Name="Фамилия_альпиниста" ColumnName="Фамилия альпиниста" />
+          <ScalarProperty Name="Имя_альпиниста" ColumnName="Имя альпиниста" />
+          <ScalarProperty Name="Отчество_альпиниста" ColumnName="Отчество альпиниста" />
+          <ScalarProperty Name="Количество_восхождений_альпиниста" ColumnName="Количество восхождений альпиниста" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Количество_возвождений">
+      <EntityTypeMapping TypeName="chronichlesModel.Количество_возвождений">
+        <MappingFragment StoreEntitySet="Количество_возвождений">
+          <ScalarProperty Name="ID_Горы" ColumnName="ID Горы" />
+          <ScalarProperty Name="Название_Горы" ColumnName="Название Горы" />
+          <ScalarProperty Name="Количество_восхождений" ColumnName="Количество восхождений" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Список_гор_на_которых_бывали_альпинисты">
+      <EntityTypeMapping TypeName="chronichlesModel.Список_гор_на_которых_бывали_альпинисты">
+        <MappingFragment StoreEntitySet="Список_гор_на_которых_бывали_альпинисты">
+          <ScalarProperty Name="ID_Группы" ColumnName="ID Группы" />
+          <ScalarProperty Name="ID_Альпиниста" ColumnName="ID Альпиниста" />
+          <ScalarProperty Name="Фамилия_альпиниста" ColumnName="Фамилия альпиниста" />
+          <ScalarProperty Name="Имя_альпиниста" ColumnName="Имя альпиниста" />
+          <ScalarProperty Name="Отчество_альпиниста" ColumnName="Отчество альпиниста" />
+          <ScalarProperty Name="Дата_Возхождения" ColumnName="Дата Возхождения" />
+          <ScalarProperty Name="Название_Горы" ColumnName="Название Горы" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

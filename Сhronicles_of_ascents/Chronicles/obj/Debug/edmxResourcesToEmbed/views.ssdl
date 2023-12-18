@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище chronichlesModelViews" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Альпинисты">
+    <Key>
+      <PropertyRef Name="ID Альпиниста" />
+    </Key>
+    <Property Name="ID Альпиниста" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Адрес" Type="nvarchar" MaxLength="255" />
+    <Property Name="Телефон" Type="nvarchar" MaxLength="11" />
+    <Property Name="Пол" Type="nvarchar" MaxLength="1" />
+    <Property Name="Фамилия альпиниста" Type="nvarchar" MaxLength="255" />
+    <Property Name="Имя альпиниста" Type="nvarchar" MaxLength="255" />
+    <Property Name="Отчество альпиниста" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Альпинисты_в_группах">
+    <Key>
+      <PropertyRef Name="ID_Альпинисты_в_группах" />
+    </Key>
+    <Property Name="ID_Альпинисты_в_группах" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID Группы" Type="int" />
+    <Property Name="ID Альпиниста" Type="int" />
+    <Property Name="Дата начала возхождения" Type="date" />
+    <Property Name="Дата завершения восхождения" Type="date" />
+  </EntityType>
+  <EntityType Name="Восхождения">
+    <Key>
+      <PropertyRef Name="ID_Восхождения" />
+    </Key>
+    <Property Name="ID_Восхождения" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID Горы" Type="int" />
+    <Property Name="ID Группы" Type="int" />
+    <Property Name="Дата Возхождения" Type="date" />
+    <Property Name="Успешность" Type="nvarchar" MaxLength="7" />
+    <Property Name="Длительность" Type="int" />
+    <Property Name="Количество вошедших" Type="int" />
+  </EntityType>
+  <EntityType Name="Горы">
+    <Key>
+      <PropertyRef Name="ID Горы" />
+    </Key>
+    <Property Name="ID Горы" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Название" Type="nvarchar" MaxLength="255" />
+    <Property Name="Высота" Type="int" />
+    <Property Name="Страна" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Группы">
+    <Key>
+      <PropertyRef Name="ID Группы" />
+    </Key>
+    <Property Name="ID Группы" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Количество" Type="int" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6013: Первичный ключ в таблице или представлении "chronichles.dbo.Восхождения_Успешные" не определен, его не удалось вывести. Эта таблица или представление исключены. Чтобы использовать сущность, необходимо проверить схему, добавить правильные ключи и раскомментировать ее.
+        <EntityType Name="Восхождения_Успешные">
+          <Property Name="ID Горы" Type="int" />
+          <Property Name="ID Группы" Type="int" />
+          <Property Name="Дата Возхождения" Type="datetime" />
+          <Property Name="Успешность" Type="nvarchar" MaxLength="7" />
+          <Property Name="Длительность" Type="int" />
+          <Property Name="Количество вошедших" Type="int" />
+          <Property Name="Название горы" Type="nvarchar" MaxLength="255" />
+          <Property Name="Высота" Type="int" />
+          <Property Name="Страна" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "chronichles.dbo.Колво_восхождений_альпинистов" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="Колво_восхождений_альпинистов">
+    <Key>
+      <PropertyRef Name="ID Альпиниста" />
+    </Key>
+    <Property Name="ID Альпиниста" Type="int" Nullable="false" />
+    <Property Name="Фамилия альпиниста" Type="nvarchar" MaxLength="255" />
+    <Property Name="Имя альпиниста" Type="nvarchar" MaxLength="255" />
+    <Property Name="Отчество альпиниста" Type="nvarchar" MaxLength="255" />
+    <Property Name="Количество восхождений альпиниста" Type="int" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "chronichles.dbo.Количество_возвождений" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="Количество_возвождений">
+    <Key>
+      <PropertyRef Name="ID Горы" />
+    </Key>
+    <Property Name="ID Горы" Type="int" Nullable="false" />
+    <Property Name="Название Горы" Type="nvarchar" MaxLength="255" />
+    <Property Name="Количество восхождений" Type="int" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "chronichles.dbo.Список_гор_на_которых_бывали_альпинисты" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="Список_гор_на_которых_бывали_альпинисты">
+    <Key>
+      <PropertyRef Name="ID Альпиниста" />
+    </Key>
+    <Property Name="ID Группы" Type="int" />
+    <Property Name="ID Альпиниста" Type="int" Nullable="false" />
+    <Property Name="Фамилия альпиниста" Type="nvarchar" MaxLength="255" />
+    <Property Name="Имя альпиниста" Type="nvarchar" MaxLength="255" />
+    <Property Name="Отчество альпиниста" Type="nvarchar" MaxLength="255" />
+    <Property Name="Дата Возхождения" Type="date" />
+    <Property Name="Название Горы" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6013: Первичный ключ в таблице или представлении "chronichles.dbo.Среднее время восхождения" не определен, его не удалось вывести. Эта таблица или представление исключены. Чтобы использовать сущность, необходимо проверить схему, добавить правильные ключи и раскомментировать ее.
+        <EntityType Name="Среднее время восхождения">
+          <Property Name="Страна" Type="nvarchar" MaxLength="255" />
+          <Property Name="Пол" Type="nvarchar" MaxLength="1" />
+          <Property Name="Средняя длительность восхождений" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>-->
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6013: Первичный ключ в таблице или представлении "chronichles.dbo.Сумма_высоты_гор_в_стране_более_5000" не определен, его не удалось вывести. Эта таблица или представление исключены. Чтобы использовать сущность, необходимо проверить схему, добавить правильные ключи и раскомментировать ее.
+        <EntityType Name="Сумма_высоты_гор_в_стране_более_5000">
+          <Property Name="Страна" Type="nvarchar" MaxLength="255" />
+          <Property Name="Количество гор" Type="int" />
+          <Property Name="Общая высота" Type="int" />
+        </EntityType>-->
+  <Association Name="FK_Альпинисты в группах_Альпинисты">
+    <End Role="Альпинисты" Type="Self.Альпинисты" Multiplicity="0..1" />
+    <End Role="Альпинисты_в_группах" Type="Self.Альпинисты_в_группах" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Альпинисты">
+        <PropertyRef Name="ID Альпиниста" />
+      </Principal>
+      <Dependent Role="Альпинисты_в_группах">
+        <PropertyRef Name="ID Альпиниста" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Альпинисты в группах_Группы">
+    <End Role="Группы" Type="Self.Группы" Multiplicity="0..1" />
+    <End Role="Альпинисты_в_группах" Type="Self.Альпинисты_в_группах" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Группы">
+        <PropertyRef Name="ID Группы" />
+      </Principal>
+      <Dependent Role="Альпинисты_в_группах">
+        <PropertyRef Name="ID Группы" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Восхождения_Горы">
+    <End Role="Горы" Type="Self.Горы" Multiplicity="0..1" />
+    <End Role="Восхождения" Type="Self.Восхождения" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Горы">
+        <PropertyRef Name="ID Горы" />
+      </Principal>
+      <Dependent Role="Восхождения">
+        <PropertyRef Name="ID Горы" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Восхождения_Группы">
+    <End Role="Группы" Type="Self.Группы" Multiplicity="0..1" />
+    <End Role="Восхождения" Type="Self.Восхождения" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Группы">
+        <PropertyRef Name="ID Группы" />
+      </Principal>
+      <Dependent Role="Восхождения">
+        <PropertyRef Name="ID Группы" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище chronichlesModelViewsContainer">
+    <EntitySet Name="Альпинисты" EntityType="Self.Альпинисты" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Альпинисты_в_группах" EntityType="Self.Альпинисты_в_группах" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Восхождения" EntityType="Self.Восхождения" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Горы" EntityType="Self.Горы" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Группы" EntityType="Self.Группы" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Колво_восхождений_альпинистов" EntityType="Self.Колво_восхождений_альпинистов" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Колво_восхождений_альпинистов].[ID Альпиниста] AS [ID Альпиниста], 
+    [Колво_восхождений_альпинистов].[Фамилия альпиниста] AS [Фамилия альпиниста], 
+    [Колво_восхождений_альпинистов].[Имя альпиниста] AS [Имя альпиниста], 
+    [Колво_восхождений_альпинистов].[Отчество альпиниста] AS [Отчество альпиниста], 
+    [Колво_восхождений_альпинистов].[Количество восхождений альпиниста] AS [Количество восхождений альпиниста]
+    FROM [dbo].[Колво_восхождений_альпинистов] AS [Колво_восхождений_альпинистов]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Количество_возвождений" EntityType="Self.Количество_возвождений" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Количество_возвождений].[ID Горы] AS [ID Горы], 
+    [Количество_возвождений].[Название Горы] AS [Название Горы], 
+    [Количество_возвождений].[Количество восхождений] AS [Количество восхождений]
+    FROM [dbo].[Количество_возвождений] AS [Количество_возвождений]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Список_гор_на_которых_бывали_альпинисты" EntityType="Self.Список_гор_на_которых_бывали_альпинисты" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Список_гор_на_которых_бывали_альпинисты].[ID Группы] AS [ID Группы], 
+    [Список_гор_на_которых_бывали_альпинисты].[ID Альпиниста] AS [ID Альпиниста], 
+    [Список_гор_на_которых_бывали_альпинисты].[Фамилия альпиниста] AS [Фамилия альпиниста], 
+    [Список_гор_на_которых_бывали_альпинисты].[Имя альпиниста] AS [Имя альпиниста], 
+    [Список_гор_на_которых_бывали_альпинисты].[Отчество альпиниста] AS [Отчество альпиниста], 
+    [Список_гор_на_которых_бывали_альпинисты].[Дата Возхождения] AS [Дата Возхождения], 
+    [Список_гор_на_которых_бывали_альпинисты].[Название Горы] AS [Название Горы]
+    FROM [dbo].[Список_гор_на_которых_бывали_альпинисты] AS [Список_гор_на_которых_бывали_альпинисты]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Альпинисты в группах_Альпинисты" Association="Self.FK_Альпинисты в группах_Альпинисты">
+      <End Role="Альпинисты" EntitySet="Альпинисты" />
+      <End Role="Альпинисты_в_группах" EntitySet="Альпинисты_в_группах" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Альпинисты в группах_Группы" Association="Self.FK_Альпинисты в группах_Группы">
+      <End Role="Группы" EntitySet="Группы" />
+      <End Role="Альпинисты_в_группах" EntitySet="Альпинисты_в_группах" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Восхождения_Горы" Association="Self.FK_Восхождения_Горы">
+      <End Role="Горы" EntitySet="Горы" />
+      <End Role="Восхождения" EntitySet="Восхождения" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Восхождения_Группы" Association="Self.FK_Восхождения_Группы">
+      <End Role="Группы" EntitySet="Группы" />
+      <End Role="Восхождения" EntitySet="Восхождения" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

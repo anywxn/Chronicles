@@ -4,7 +4,30 @@
              xmlns:local="clr-namespace:Chronicles"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-                <Style x:Key="CustomTabControlStyle" TargetType="TabControl">
+        <Style x:Key="DataGridss" TargetType="DataGrid">
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="RowHeaderWidth" Value="0"/>
+            <Setter Property="CellStyle">
+                <Setter.Value>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="DataGridCell">
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="Control">
+            <Setter Property="FontFamily" Value="Microsoft JhengHei UI Light"/>
+        </Style>
+        <Style x:Key="CustomTabControlStyle" TargetType="TabControl">
                     <Setter Property="Margin" Value="10"/>
                     <Setter Property="BorderBrush" Value="Gainsboro"/>
                     <Setter Property="Template">

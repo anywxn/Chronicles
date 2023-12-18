@@ -6,9 +6,24 @@
       xmlns:local="clr-namespace:Chronicles"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AddEdit">
+      Title="AddEdit" FontFamily="Microsoft JhengHei UI Light">
 
     <Grid>
-        <TextBlock Text="Привет!" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"></TextBlock>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="730*"/>
+            <RowDefinition Height="50*"/>
+        </Grid.RowDefinitions>
+        <DataGrid x:Name="Alp" AutoGenerateColumns="False" IsReadOnly="False" Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding ID_Альпиниста}" Width="auto" IsReadOnly="True" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Имя" Binding="{Binding Имя_альпиниста}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding Фамилия_альпиниста}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding Отчество_альпиниста}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Пол" Binding="{Binding Пол}" Width="auto"></DataGridTextColumn>
+                <DataGridTextColumn Header="Телефон" Binding="{Binding Телефон}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Адрес" Binding="{Binding Адрес}" Width="*"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>
