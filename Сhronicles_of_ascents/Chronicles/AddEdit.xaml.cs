@@ -23,7 +23,7 @@ namespace Chronicles
         public AddEdit()
         {
             InitializeComponent();
-            Alp.ItemsSource = chronichlesEntities.GetContext().Альпинисты.ToList();
+            //Alp.ItemsSource = chronichlesEntities.GetContext().Альпинисты.ToList();
         }
 
         private void Btn_delete_Click(object sender, RoutedEventArgs e)
@@ -37,7 +37,7 @@ namespace Chronicles
                 {
                     chronichlesEntities.GetContext().Альпинисты.RemoveRange(SelectedForDelete);
                     chronichlesEntities.GetContext().SaveChanges();
-                    MessageBox.Show("Данные удалена!");
+                    MessageBox.Show("Данные удалены!");
                 }
                 catch (Exception ex)
                 {
@@ -48,12 +48,25 @@ namespace Chronicles
 
         private void Btn_edit_Click(object sender, RoutedEventArgs e)
         {
+            Альпинисты selectedAlpinist = (Альпинисты)Alp.SelectedItem;
 
+            // Передайте выбранный объект на страницу редактирования
+            Manager.MainFrame.Navigate(new AddEditPageTable1(selectedAlpinist));
         }
 
         private void Btn_add_Click(object sender, RoutedEventArgs e)
         {
+            Manager.MainFrame.Navigate(new AddEditPageTable1(null));
+        }
 
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if(Visibility == Visibility.Visible)
+            {
+                chronichlesEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                Alp.ItemsSource = chronichlesEntities.GetContext().Альпинисты.ToList();
+
+            }
         }
     }
 }

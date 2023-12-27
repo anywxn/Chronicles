@@ -1,0 +1,35 @@
+﻿<Page x:Class="Chronicles.AddEditPageTable3"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Chronicles"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddEditPageTable3" FontFamily="Microsoft JhengHei UI Light">
+    <Grid>
+        <!-- Добавьте элементы управления для ввода данных -->
+        <StackPanel Margin="10">
+            <TextBlock Text="ID Горы:" />
+            <TextBox Text="{Binding ID_Горы}" Width="200" Margin="0,0,0,10" />
+
+            <TextBlock Text="ID Группы:" />
+            <TextBox Text="{Binding ID_Группы}" Width="200" Margin="0,0,0,10" />
+
+            <TextBlock Text="Дата Возхождения:" />
+            <TextBox Text="{Binding Дата_Возхождения, StringFormat=d}"  Width="200" Margin="0,0,0,10" />
+
+            <TextBlock Text="Успешность возхождения:" />
+            <TextBox Text="{Binding Успешность}" Width="200" Margin="0,0,0,10" />
+
+            <TextBlock Text="Длительность, Ч:" />
+            <TextBox Text="{Binding Длительность}" Width="200" Margin="0,0,0,10" />
+
+            <TextBlock Text="Количество вошедших:" />
+            <TextBox Text="{Binding Количество_вошедших}"  Width="200" Margin="0,0,0,10" />
+
+            <!-- Кнопка для сохранения данных -->
+            <Button Content="Сохранить" Name="BtnSave" Width="150" Height="30" Click="BtnSave_Click" />
+        </StackPanel>
+    </Grid>
+</Page>
