@@ -12,7 +12,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50*"/>
             <RowDefinition Height="730*"/>
-            <RowDefinition Height="50*"/>
+            <RowDefinition Height="80*"/>
         </Grid.RowDefinitions>
         <DataGrid x:Name="Alp" AutoGenerateColumns="False" IsReadOnly="False" Grid.Row="1">
             <DataGrid.Columns>
@@ -25,5 +25,11 @@
                 <DataGridTextColumn Header="Адрес" Binding="{Binding Адрес}" Width="*"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <Button Grid.Row="2" Content="Удалить" Background="White" Name="Btn_delete" Foreground="Black" BorderThickness="0.5" Margin="10,5,10,5" Width="125" Height="30" FontSize="15" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Btn_delete_Click">
+        </Button>
+        <Button Grid.Row="2" Content="Редактировать" Background="White" Name="Btn_edit" Foreground="Black" BorderThickness="0.5" Margin="0,5,150,0" Width="125" Height="30" FontSize="15" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Btn_edit_Click">
+        </Button>
+        <Button Grid.Row="2" Content="Добавить" Background="White" Name="Btn_add" Foreground="Black" BorderThickness="0.5" Margin="0,5,295,0" Width="125" Height="30" FontSize="15" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Btn_add_Click" >
+        </Button>
     </Grid>
 </Page>

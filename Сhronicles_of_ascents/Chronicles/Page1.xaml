@@ -30,32 +30,33 @@
                     <!-- Левая часть (вертикально расположенные кнопки) -->
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel Orientation="Vertical" Width="200">
-                            <Label>Горы выше 5 км</Label>
-                            <Button Content="Запрос 1" Name="query1" Click="query1_Click"/>
-                            <TextBlock Text="Кол-во восхождений альпинистов." TextWrapping="Wrap"/>
-                            <Button Content="Запрос 2" Name="query2" Click="query2_Click"/>
-                            <TextBlock Text="Средняя длительность восхождений." TextWrapping="Wrap"/>
-                            <Button Content="Запрос 3" Name="query3" Click="query3_Click"/>
-                            <TextBlock Text="Общая высота гор по странам." TextWrapping="Wrap"/>
-                            <Button Content="Запрос 4" Name="query4" Click="query4_Click"/>
-                            <TextBlock Text="Восхождения на горы в хронологическом порядке." TextWrapping="Wrap"/>
-                            <Button Content="Запрос 5" Name="query5" Click="query5_Click" />
-                            <TextBlock Text="Горы по количеству восхождений." TextWrapping="Wrap"/>
-                            <Button Content="Запрос 6"  Name="query6" Click="query6_Click"/>
-                            <TextBlock Text="Альпинисты отсортированные по фамилии." TextWrapping="Wrap"/>
-                            <Button Content="Запрос 7"  Name="query7" Click="query7_Click"/>
-                            <TextBlock Text="Альпинисты ни разу не всходившие." TextWrapping="Wrap"/>
-                            <Button Content="Запрос 8"  Name="query8" Click="query8_Click"/>
-                            <TextBlock Text="Количество восхождений по странам и их успешность." TextWrapping="Wrap"/>
-                            <Button Content="Запрос 9"  Name="query9" Click="query9_Click"/>
-                            <TextBlock Text="Топ 5 альпинистов на количеству восхождлений." TextWrapping="Wrap"/>
-                            <Button Content="Запрос 10"  Name="query10" Click="query10_Click"/>
+                            <Label></Label>
+                            <TextBlock Text="Горы выше 5 км." TextWrapping="Wrap" Margin="20,0,0,0"/>
+                            <Button Content="Запрос 1" Name="query1" Click="query1_Click" Margin="0,0,0,25"/>
+                            <TextBlock Margin="20,0,0,0" Text="Кол-во восхождений альпинистов." TextWrapping="Wrap"/>
+                            <Button Margin="0,0,0,25" Content="Запрос 2" Name="query2" Click="query2_Click"/>
+                            <TextBlock Margin="20,0,0,0" Text="Средняя длительность восхождений." TextWrapping="Wrap"/>
+                            <Button Margin="0,0,0,25" Content="Запрос 3" Name="query3" Click="query3_Click"/>
+                            <TextBlock Margin="20,0,0,0" Text="Общая высота гор по странам." TextWrapping="Wrap"/>
+                            <Button Margin="0,0,0,25" Content="Запрос 4" Name="query4" Click="query4_Click"/>
+                            <TextBlock Margin="20,0,0,0" Text="Восхождения на горы в хронологическом порядке." TextWrapping="Wrap"/>
+                            <Button Margin="0,0,0,25" Content="Запрос 5" Name="query5" Click="query5_Click" />
+                            <TextBlock Margin="20,0,0,0" Text="Горы по количеству восхождений." TextWrapping="Wrap"/>
+                            <Button Margin="0,0,0,25" Content="Запрос 6"  Name="query6" Click="query6_Click"/>
+                            <TextBlock Margin="20,0,0,0" Text="Альпинисты отсортированные по фамилии." TextWrapping="Wrap"/>
+                            <Button Margin="0,0,0,25" Content="Запрос 7"  Name="query7" Click="query7_Click"/>
+                            <TextBlock Margin="20,0,0,0" Text="Альпинисты ни разу не всходившие." TextWrapping="Wrap"/>
+                            <Button Margin="0,0,0,25" Content="Запрос 8"  Name="query8" Click="query8_Click"/>
+                            <TextBlock Margin="20,0,0,0" Text="Количество восхождений по странам и их успешность." TextWrapping="Wrap"/>
+                            <Button Margin="0,0,0,25" Content="Запрос 9"  Name="query9" Click="query9_Click"/>
+                            <TextBlock Margin="20,0,0,0" Text="Топ 5 альпинистов на количеству восхождлений." TextWrapping="Wrap"/>
+                            <Button Margin="0,0,0,25" Content="Запрос 10"  Name="query10" Click="query10_Click"/>
                             <!-- Добавьте здесь другие кнопки -->
                         </StackPanel>
                     </ScrollViewer>
 
                     <!-- Правая часть (отображение результата запроса) -->
-                    <DataGrid x:Name="resultGrid" AutoGenerateColumns="True" />
+                    <DataGrid x:Name="resultGrid" AutoGenerateColumns="True" Width="auto"/>
                 </StackPanel>
             </TabItem>
             <TabItem Header="Представления" Style="{StaticResource CustomTabItemStyle}">
@@ -65,15 +66,15 @@
                         <StackPanel Orientation="Vertical" Width="200">
                             
                             <Button Content="Представление 1" Name="btnView1" Click="btnView1_Click"/>
-                            <Button Content="Представление 2" />
-                            <Button Content="Представление 3" />
-                            <Button Content="Представление 4" />
-                            <Button Content="Представление 5" />
+                            <Button Content="Представление 2" Name="btnView2" Click="btnView2_Click"/>
+                            <Button Content="Представление 3" Name="btnView3" Click="btnView3_Click"/>
+                            <Button Content="Представление 4" Name="btnView4" Click="btnView4_Click"/>
+                            <Button Content="Представление 5" Name="btnView5" Click="btnView5_Click"/>
                         </StackPanel>
                     </ScrollViewer>
 
                     <!-- Правая часть (отображение результата запроса) -->
-                    <DataGrid x:Name="ViewGrid" AutoGenerateColumns="True" />
+                    <DataGrid x:Name="ViewGrid" AutoGenerateColumns="True" Width="auto"/>
                 </StackPanel>
             </TabItem>
         </TabControl>

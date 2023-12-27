@@ -322,7 +322,152 @@ namespace Chronicles
         private void btnView1_Click(object sender, RoutedEventArgs e)
         {
             var context = new chronichlesEntities();
+            try
+            {
+                var successfulAscents = from ascent in context.Восхождения
+                                        where ascent.Успешность == "Успех"
+                                        select ascent;
 
+                var query = from successfulAscent in successfulAscents
+                            join mountain in context.Горы on successfulAscent.ID_Горы equals mountain.ID_Горы
+                            select new
+                            {
+                                ID__Горы = successfulAscent.ID_Горы,
+                                ID__Группы = successfulAscent.ID_Группы,
+                                Дата__Восхождения = successfulAscent.Дата_Возхождения,
+                                Успешность = successfulAscent.Успешность,
+                                Длительность = successfulAscent.Длительность,
+                                Количество__вошедших = successfulAscent.Количество_вошедших,
+                                Название__горы = mountain.Название,
+                                Высота = mountain.Высота,
+                                Страна = mountain.Страна
+                            };
+
+                ViewGrid.ItemsSource = query.ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}");
+            }
+        }
+
+        private void btnView2_Click(object sender, RoutedEventArgs e)
+        {
+            var context = new chronichlesEntities();
+            try
+            {
+                var query = from альпинист in context.Альпинисты
+                            join альпинистВГруппах in context.Альпинисты_в_группах on альпинист.ID_Альпиниста equals альпинистВГруппах.ID_Альпиниста
+                            join группа in context.Группы on альпинистВГруппах.ID_Группы equals группа.ID_Группы
+                            join восхождение in context.Восхождения on группа.ID_Группы equals восхождение.ID_Группы
+                            join гора in context.Горы on восхождение.ID_Горы equals гора.ID_Горы
+                            group альпинист by new
+                            {
+                                альпинист.ID_Альпиниста,
+                                альпинист.Фамилия_альпиниста,
+                                альпинист.Имя_альпиниста,
+                                альпинист.Отчество_альпиниста
+                            } into g
+                            select new
+                            {
+                                ID__Альпиниста = g.Key.ID_Альпиниста,
+                                Фамилия__альпиниста = g.Key.Фамилия_альпиниста,
+                                Имя__альпиниста = g.Key.Имя_альпиниста,
+                                Отчество__альпиниста = g.Key.Отчество_альпиниста,
+                                Количество__восхождений = g.Count()
+                            };
+
+                ViewGrid.ItemsSource = query.ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}");
+            }
+        }
+
+        private void btnView3_Click(object sender, RoutedEventArgs e)
+        {
+            var context = new chronichlesEntities();
+            try
+            {
+                var query = from гора in context.Горы
+                            join восхождение in context.Восхождения on гора.ID_Горы equals восхождение.ID_Горы
+                            group гора by new
+                            {
+                                гора.ID_Горы,
+                                гора.Название
+                            } into g
+                            select new
+                            {
+                                ID__Горы = g.Key.ID_Горы,
+                                Название__Горы = g.Key.Название,
+                                Количество__восхождений = g.Count()
+                            };
+
+                ViewGrid.ItemsSource = query.ToList();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}");
+            }
+        }
+
+        private void btnView4_Click(object sender, RoutedEventArgs e)
+        {
+            var context = new chronichlesEntities();
+            try
+            {
+                var query = from гора in context.Горы
+                            join восхождение in context.Восхождения on гора.ID_Горы equals восхождение.ID_Горы
+                            join группа in context.Группы on восхождение.ID_Группы equals группа.ID_Группы
+                            join альпинистВГруппе in context.Альпинисты_в_группах on группа.ID_Группы equals альпинистВГруппе.ID_Группы
+                            join альпинист in context.Альпинисты on альпинистВГруппе.ID_Альпиниста equals альпинист.ID_Альпиниста
+                            group восхождение by new
+                            {
+                                Страна = гора.Страна,
+                                Пол = альпинист.Пол
+                            } into g
+                            orderby g.Key.Страна, g.Key.Пол
+                            select new
+                            {
+                                Страна = g.Key.Страна,
+                                Пол = g.Key.Пол,
+                                Средняя__длительность__восхождений = Math.Round((double)g.Average(в => в.Длительность), 2)
+                            };
+
+
+                ViewGrid.ItemsSource = query.ToList();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}");
+            }
+        }
+
+        private void btnView5_Click(object sender, RoutedEventArgs e)
+        {
+            var context = new chronichlesEntities();
+            try
+            {
+                var query = from гора in context.Горы
+                            where гора.Высота > 5000
+                            group гора by гора.Страна into g
+                            select new
+                            {
+                                Страна = g.Key,
+                                Количество__гор = g.Count(),
+                                Общая__высота = g.Sum(x => x.Высота)
+                            };
+
+                ViewGrid.ItemsSource = query.ToList();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}");
+            }
         }
     }
 }

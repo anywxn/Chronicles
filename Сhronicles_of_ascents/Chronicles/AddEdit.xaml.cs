@@ -25,5 +25,35 @@ namespace Chronicles
             InitializeComponent();
             Alp.ItemsSource = chronichlesEntities.GetContext().Альпинисты.ToList();
         }
+
+        private void Btn_delete_Click(object sender, RoutedEventArgs e)
+        {
+            var SelectedForDelete = Alp.SelectedItems.Cast<Альпинисты>().ToList();
+
+            if (MessageBox.Show($"Вы точно хотите удалить выделенные данные? Всего: {SelectedForDelete.Count()}", "Внимание", 
+                MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    chronichlesEntities.GetContext().Альпинисты.RemoveRange(SelectedForDelete);
+                    chronichlesEntities.GetContext().SaveChanges();
+                    MessageBox.Show("Данные удалена!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
+            }
+        }
+
+        private void Btn_edit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Btn_add_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
