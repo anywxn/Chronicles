@@ -11,7 +11,7 @@
 
     <Grid>
         <TabControl Style="{StaticResource CustomTabControlStyle}">
-            <TabItem Header="Таблицы" Style="{StaticResource CustomTabItemStyle}">
+            <TabItem Header="" Style="{StaticResource CustomTabItemStyle}">
                 <StackPanel>
                     <Button Content="Таблица 'Альпинисты'" Background="White" Name="Table1" Foreground="Black" BorderThickness="0.5" Margin="10,25,10,5" Width="250" Height="30" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Table1_Click">
                     </Button>
@@ -64,12 +64,16 @@
                     <!-- Левая часть (вертикально расположенные кнопки) -->
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel Orientation="Vertical" Width="200">
-                            
-                            <Button Content="Представление 1" Name="btnView1" Click="btnView1_Click"/>
-                            <Button Content="Представление 2" Name="btnView2" Click="btnView2_Click"/>
-                            <Button Content="Представление 3" Name="btnView3" Click="btnView3_Click"/>
-                            <Button Content="Представление 4" Name="btnView4" Click="btnView4_Click"/>
-                            <Button Content="Представление 5" Name="btnView5" Click="btnView5_Click"/>
+                            <TextBlock Text="Успешные восхождения." TextWrapping="Wrap" Margin="20,0,0,0"/>
+                            <Button Content="Представление 1" Name="btnView1" Click="btnView1_Click" Margin="0,0,0,25"/>
+                            <TextBlock Text="Альпинисты которые хоть раз восходили." TextWrapping="Wrap" Margin="20,0,0,0"/>
+                            <Button Content="Представление 2" Name="btnView2" Click="btnView2_Click" Margin="0,0,0,25"/>
+                            <TextBlock Text="Горы на которые восходили." TextWrapping="Wrap" Margin="20,0,0,0"/>
+                            <Button Content="Представление 3" Name="btnView3" Click="btnView3_Click" Margin="0,0,0,25"/>
+                            <TextBlock Text="Средняя длительность восхождений по странам." TextWrapping="Wrap" Margin="20,0,0,0"/>
+                            <Button Content="Представление 4" Name="btnView4" Click="btnView4_Click" Margin="0,0,0,25"/>
+                            <TextBlock Text="Сумма высот гор по странам, выше 5000м." TextWrapping="Wrap" Margin="20,0,0,0"/>
+                            <Button Content="Представление 5" Name="btnView5" Click="btnView5_Click" Margin="0,0,0,25"/>
                         </StackPanel>
                     </ScrollViewer>
 

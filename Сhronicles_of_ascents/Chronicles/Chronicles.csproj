@@ -73,6 +73,12 @@
     <Compile Include="AddEditPageTable3.xaml.cs">
       <DependentUpon>AddEditPageTable3.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddEditPageTable4.xaml.cs">
+      <DependentUpon>AddEditPageTable4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddEditPageTable5.xaml.cs">
+      <DependentUpon>AddEditPageTable5.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -137,6 +143,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddEditPageTable3.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddEditPageTable4.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddEditPageTable5.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

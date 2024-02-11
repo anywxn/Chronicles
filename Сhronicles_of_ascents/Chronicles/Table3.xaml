@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
         <DataGrid x:Name="up" AutoGenerateColumns="False" IsReadOnly="False" Grid.Row="1">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID Возхождения" Binding="{Binding ID_Восхождения}" Width="auto" IsReadOnly="True" ></DataGridTextColumn>
+                <DataGridTextColumn Header="ID Возхождения" Binding="{Binding ID_Восхождения}"  Width="auto" IsReadOnly="True" ></DataGridTextColumn>
                 <DataGridTextColumn Header="ID Горы" Binding="{Binding ID_Горы}" Width="auto" ></DataGridTextColumn>
                 <DataGridTextColumn Header="ID Группы" Binding="{Binding ID_Группы}" Width="auto" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Дата возхождения" Binding="{Binding Дата_Возхождения, StringFormat=d}" Width="*"></DataGridTextColumn>

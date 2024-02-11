@@ -66,3 +66,7 @@ C:\Users\Валерий\Desktop\study\project\Chronicles\Сhronicles_of_ascents\
 C:\Users\Валерий\Desktop\study\project\Chronicles\Сhronicles_of_ascents\Chronicles\obj\Debug\AddEditPageTable2.baml
 C:\Users\Валерий\Desktop\study\project\Chronicles\Сhronicles_of_ascents\Chronicles\obj\Debug\AddEditPageTable3.g.cs
 C:\Users\Валерий\Desktop\study\project\Chronicles\Сhronicles_of_ascents\Chronicles\obj\Debug\AddEditPageTable3.baml
+C:\Users\Валерий\Desktop\study\project\Chronicles\Сhronicles_of_ascents\Chronicles\obj\Debug\AddEditPageTable4.g.cs
+C:\Users\Валерий\Desktop\study\project\Chronicles\Сhronicles_of_ascents\Chronicles\obj\Debug\AddEditPageTable4.baml
+C:\Users\Валерий\Desktop\study\project\Chronicles\Сhronicles_of_ascents\Chronicles\obj\Debug\AddEditPageTable5.g.cs
+C:\Users\Валерий\Desktop\study\project\Chronicles\Сhronicles_of_ascents\Chronicles\obj\Debug\AddEditPageTable5.baml

@@ -42,6 +42,49 @@ namespace Chronicles
                 context.Database.ExecuteSqlCommand(updateQuery);
             }
         }
+
+        private void Btn_delete_Click(object sender, RoutedEventArgs e)
+        {
+            var SelectedForDelete = group.SelectedItems.Cast<Группы>().ToList();
+
+            if (MessageBox.Show($"Вы точно хотите удалить выделенные данные? Всего: {SelectedForDelete.Count()}", "Внимание",
+                MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    chronichlesEntities.GetContext().Группы.RemoveRange(SelectedForDelete);
+                    chronichlesEntities.GetContext().SaveChanges();
+                    MessageBox.Show("Данные удалены!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
+            }
+        }
+
+        private void Btn_edit_Click(object sender, RoutedEventArgs e)
+        {
+            Группы selectedAlpinist = (Группы)group.SelectedItem;
+
+            // Передайте выбранный объект на страницу редактирования
+            Manager.MainFrame.Navigate(new AddEditPageTable4(selectedAlpinist));
+        }
+
+        private void Btn_add_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new AddEditPageTable4(null));
+        }
+
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (Visibility == Visibility.Visible)
+            {
+                chronichlesEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                group.ItemsSource = chronichlesEntities.GetContext().Группы.ToList();
+
+            }
+        }
     }
 
 }
